@@ -14,6 +14,7 @@ export default class TextInput extends React.Component<*> {
       <View style={styles.container}>
         <RNTextInput
           placeholder="This is text placeholder..."
+          placeholderTextColor={this.context.dark && '#FFF'}
           underlineColorAndroid="transparent"
           style={textInputStyle}
           {...this.props}
