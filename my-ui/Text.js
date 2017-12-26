@@ -5,12 +5,12 @@ import { Text as RNText } from 'react-native';
 
 export default class Text extends React.Component<*> {
   render() {
-    const styles = this.context.theme.stylesMap.Text;
-    const containerStyle = [styles.container];
+    const { font } = this.props;
+    const fontStyle = [this.context.theme.fonts[font]];
     if (this.context.dark) {
-      containerStyle.push({ color: '#FFF' });
+      fontStyle.push({ color: '#FFF' });
     }
-    return <RNText style={containerStyle} {...this.props}>Text</RNText>;
+    return <RNText style={fontStyle} {...this.props} />;
   }
 }
 

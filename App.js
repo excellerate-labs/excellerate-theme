@@ -1,47 +1,20 @@
 // @flow
+/* eslint-disable no-alert */
 import * as React from 'react';
 import { View } from 'react-native';
 
-import Button from './Button';
-import Text from './Text';
 import { createTheme, ThemeProvider } from './src';
-import type { Colors, Fonts } from './src';
 
-const myStylesMakers = {
-  Button: (colors: Colors, fonts: Fonts) => ({
-    container: {
-      alignItems: 'center',
-      borderColor: colors.primary,
-      borderWidth: 1,
-      height: 50,
-      justifyContent: 'center',
-      width: 100,
-    },
-    label: {
-      ...fonts.large,
-    },
-  }),
-  Text: (colors: Colors, fonts: Fonts) => ({
-    container: {
-      ...fonts.normal,
-    },
-  }),
-};
+import {
+  stylesMakers,
+  colors,
+  fonts,
+  Button,
+  Text,
+  TextInput,
+} from './my-ui';
 
-const myColors = {
-  primary: 'blue',
-};
-
-const myFonts = {
-  normal: {
-    fontSize: 14,
-  },
-  large: {
-    fontSize: 20,
-  },
-};
-
-const theme = createTheme(myStylesMakers, myColors, myFonts);
+const theme = createTheme(stylesMakers, colors, fonts);
 
 export default class App extends React.Component<*> {
   render() {
@@ -49,17 +22,21 @@ export default class App extends React.Component<*> {
       <View style={{ flex: 1 }}>
         <View style={{ flex: 1 }}>
           <ThemeProvider theme={theme}>
-            <View style={{ alignItems: 'center', flex: 1, justifyContent: 'center' }}>
-              <Text>This is Text</Text>
-              <Button />
+            <View style={{ alignItems: 'center', flex: 1, justifyContent: 'space-around' }}>
+              <Text>This is normal (default) text</Text>
+              <Text font="large">This is large text</Text>
+              <Button onPress={() => alert('pressed')} />
+              <TextInput />
             </View>
           </ThemeProvider>
         </View>
         <View style={{ backgroundColor: '#000', flex: 1 }}>
           <ThemeProvider theme={theme} dark>
-            <View style={{ alignItems: 'center', flex: 1, justifyContent: 'center' }}>
-              <Text>This is Text</Text>
-              <Button />
+            <View style={{ alignItems: 'center', flex: 1, justifyContent: 'space-around' }}>
+              <Text>This is normal (default) text</Text>
+              <Text font="large">This is large text</Text>
+              <Button onPress={() => alert('pressed')} />
+              <TextInput />
             </View>
           </ThemeProvider>
         </View>
