@@ -3,6 +3,7 @@ import * as React from 'react';
 import { View } from 'react-native';
 
 import Button from './Button';
+import Text from './Text';
 import { createTheme, ThemeProvider } from './src';
 import type { Colors, Fonts } from './src';
 
@@ -18,6 +19,11 @@ const myStylesMakers = {
     },
     label: {
       ...fonts.large,
+    },
+  }),
+  Text: (colors: Colors, fonts: Fonts) => ({
+    container: {
+      ...fonts.normal,
     },
   }),
 };
@@ -44,6 +50,7 @@ export default class App extends React.Component<*> {
         <View style={{ flex: 1 }}>
           <ThemeProvider theme={theme}>
             <View style={{ alignItems: 'center', flex: 1, justifyContent: 'center' }}>
+              <Text>This is Text</Text>
               <Button />
             </View>
           </ThemeProvider>
@@ -51,6 +58,7 @@ export default class App extends React.Component<*> {
         <View style={{ backgroundColor: '#000', flex: 1 }}>
           <ThemeProvider theme={theme} dark>
             <View style={{ alignItems: 'center', flex: 1, justifyContent: 'center' }}>
+              <Text>This is Text</Text>
               <Button />
             </View>
           </ThemeProvider>
